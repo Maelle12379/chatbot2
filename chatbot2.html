@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot Étudiant</title>
+  <style>
+    body { font-family: Arial; padding: 10px; }
+    #chat { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: auto; }
+    #inputZone { margin-top: 10px; }
+    input[type="text"] { width: 80%; padding: 5px; }
+    button { padding: 5px 10px; }
+  </style>
+</head>
+<body>
+  <h2>Assistant Étudiant</h2>
+  <div id="chat"></div>
+  <div id="inputZone">
+    <input type="text" id="userInput" placeholder="Écris ici..." />
+    <button onclick="sendMessage()">Envoyer</button>
+  </div>
+
+  <script>
+    const chat = document.getElementById("chat");
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const message = input.value;
+      if (!message.trim()) return;
+
+      // Affiche le message utilisateur
+      chat.innerHTML += `<p><strong>Toi :</strong> ${message}</p>`;
+      input.value = "";
+
+      // Réponse automatique simple (simulateur)
+      setTimeout(() => {
+        chat.innerHTML += `<p><strong>Bot :</strong> Je suis juste un bot de test 😄</p>`;
+        chat.scrollTop = chat.scrollHeight;
+      }, 500);
+    }
+  </script>
+</body>
+</html>
